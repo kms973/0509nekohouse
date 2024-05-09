@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+
+import { Navigate, Route,BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//pages
+import { Main } from './pages/main/main';
+import { Pokemon } from './pages/pokemon/pokemon';
+import { Todo } from './pages/todo/todo';
+
+//components
+import { Header } from './components/header/header';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header/>
+    <Routes>
+      <Route exact path = "/" element={<Navigate to = "/main"/>}/>
+      <Route exact path = "/main" element={<Main/>}/>
+      <Route exact path = "/pokemon" element={<Pokemon/>}/>
+      <Route exact path = "/todo" element={<Todo/>}/>
+    </Routes>
+
+    </Router>
   );
 }
 
